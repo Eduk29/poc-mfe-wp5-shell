@@ -29,6 +29,7 @@ module.exports = {
         library: { type: "module" },
         remotes: {
           "dashboard": "http://localhost:3001/remoteEntry.js",
+          "product": "http://localhost:3002/remoteEntry.js"
         },
 
         shared: share({
