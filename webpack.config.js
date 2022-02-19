@@ -27,10 +27,6 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
         library: { type: "module" },
-        // remotes: {
-        //   "dashboard": "http://localhost:3001/remoteEntry.js",
-        //   "product": "http://localhost:3002/remoteEntry.js"
-        // },
 
         shared: share({
           "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
@@ -40,6 +36,9 @@ module.exports = {
           "bootstrap": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
           "@angular/cdk":{ singleton: true, strictVersion: false, requiredVersion: 'auto' },
           "@angular/material":{ singleton: true, strictVersion: false, requiredVersion: 'auto' },
+          "autoprefixer":{ singleton: true, strictVersion: false, requiredVersion: 'auto' },
+          "postcss":{ singleton: true, strictVersion: false, requiredVersion: 'auto' },
+          "tailwindcss":{ singleton: true, strictVersion: false, requiredVersion: 'auto' },
 
           ...sharedMappings.getDescriptors()
         })

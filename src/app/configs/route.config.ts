@@ -27,5 +27,16 @@ export const appRoutes: Routes = [
         .then(m => m.ProductModule)
         .catch(error => alert('This MFE has an error, please return later!'))
   },
+  {
+    path: 'user',
+    loadChildren: () =>
+      loadRemoteModule({
+        type: 'module',
+        remoteEntry: 'http://localhost:3003/remoteEntry.js',
+        exposedModule: './Module'
+      })
+        .then(m => m.UserModule)
+        .catch(error => alert('This MFE has an error, please return later!'))
+  },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
