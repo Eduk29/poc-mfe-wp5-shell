@@ -38,5 +38,16 @@ export const appRoutes: Routes = [
         .then(m => m.UserModule)
         .catch(error => alert('This MFE has an error, please return later!'))
   },
+  {
+    path: 'payment',
+    loadChildren: () =>
+      loadRemoteModule({
+        type: 'script',
+        remoteEntry: 'http://localhost:3004/remoteEntry.js',
+        remoteName: 'react',
+        exposedModule: './web-components'
+      })
+      .catch(error => alert('This MFE has an error, please return later!'))
+  },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
