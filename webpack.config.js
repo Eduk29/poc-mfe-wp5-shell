@@ -4,46 +4,35 @@ const path = require("path");
 const share = mf.share;
 
 const sharedMappings = new mf.SharedMappings();
-sharedMappings.register(
-  path.join(__dirname, 'tsconfig.json'),
-  [/* mapped paths to share */]);
+sharedMappings.register(path.join(__dirname, "tsconfig.json"), [
+  /* mapped paths to share */
+]);
 
 module.exports = {
   output: {
     uniqueName: "shell",
-    publicPath: "auto"
+    publicPath: "auto",
   },
   optimization: {
-    runtimeChunk: false
-  },
-  resolve: {
-    alias: {
-      ...sharedMappings.getAliases(),
-    }
+    runtimeChunk: false,
   },
   experiments: {
-    outputModule: true
+    outputModule: true,
   },
   plugins: [
     new ModuleFederationPlugin({
-        library: { type: "module" },
-
-        shared: share({
-          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "bootstrap": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/cdk":{ singleton: true, strictVersion: false, requiredVersion: 'auto' },
-          "@angular/material":{ singleton: true, strictVersion: false, requiredVersion: 'auto' },
-          "autoprefixer":{ singleton: true, strictVersion: false, requiredVersion: 'auto' },
-          "postcss":{ singleton: true, strictVersion: false, requiredVersion: 'auto' },
-          "tailwindcss":{ singleton: true, strictVersion: false, requiredVersion: 'auto' },
-
-          ...sharedMappings.getDescriptors()
-        })
-
-    }),
-    sharedMappings.getPlugin()
+      library: { type: "module" },
+      shared: [
+        "@angular/core",
+        "@angular/common",
+        "@angular/router",
+        "bootstrap",
+        "@angular/cdk",
+        "@angular/material",
+        "autoprefixer",
+        "postcss",
+        "tailwindcss",
+      ],
+    })
   ],
 };
