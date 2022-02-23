@@ -13,14 +13,13 @@ export class WrapperComponent implements AfterContentInit {
   constructor(private route: ActivatedRoute) { }
 
   ngAfterContentInit(): void {
-
     const elementName = this.route.snapshot.data['elementName'];
     const importName = this.route.snapshot.data['importName'];
 
     const importFn = registry[importName];
 
     importFn()
-      .then(_ => console.debug(`element ${elementName} loaded!`))
+      .then(_ => console.log(`element ${elementName} loaded!`))
       .catch(err => console.error(`error loading ${elementName}:`, err));
 
     const element = document.createElement(elementName);
