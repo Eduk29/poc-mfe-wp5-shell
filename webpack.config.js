@@ -32,6 +32,9 @@ module.exports = {
         "autoprefixer",
         "postcss",
         "tailwindcss",
+        "react",
+        "react-dom",
+        "react-router-dom"
       ],
     })
   ],

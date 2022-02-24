@@ -15,5 +15,11 @@ export const registry = {
     type: 'module',
     remoteEntry: 'http://localhost:3003/remoteEntry.js',
     exposedModule: './web-components'
+  }),
+  payment: () => loadRemoteModule({
+    type: 'script',
+    remoteEntry: 'http://localhost:3004/remoteEntry.js',
+    remoteName: 'react',
+    exposedModule: './web-components'
   })
 };
