@@ -5,12 +5,14 @@ import { registry } from './../configs/registry';
 
 
 @Component({
-  template: '<div #vc></div>',
+  selector: 'app-wrapper-component',
+  templateUrl: './wrapper.component.html',
+  styleUrls: ['./wrapper.component.scss']
 })
 export class WrapperComponent implements AfterContentInit {
 
-  @ViewChild('vc', { read: ElementRef, static: true })
-  vc: ElementRef;
+  @ViewChild('webcomponent', { read: ElementRef, static: true })
+  webcomponent: ElementRef;
 
   constructor(private route: ActivatedRoute) { }
 
@@ -25,8 +27,6 @@ export class WrapperComponent implements AfterContentInit {
       .catch(err => console.error(`error loading ${elementName}:`, err));
 
     const element = document.createElement(elementName);
-    this.vc.nativeElement.appendChild(element);
-
+    this.webcomponent.nativeElement.appendChild(element);
   }
-
 }
