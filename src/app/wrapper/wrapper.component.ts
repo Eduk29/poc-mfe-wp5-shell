@@ -1,7 +1,7 @@
 import { AfterContentInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { registry } from './../configs/registry';
+import { registry } from '../configs/registry.config';
 
 
 @Component({

@@ -22,6 +22,7 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       library: { type: "module" },
+
       shared: [
         "@angular/core",
         "@angular/common",
